@@ -1,0 +1,167 @@
+private void 台风生成ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < mainMapControl.LayerCount; i++)
+            {
+                if (String.Compare(mainMapControl.Map.get_Layer(i).Name.ToString(), "forming") == 0) //只针对需要的这一层筛选
+                {
+                    mainMapControl.Map.DeleteLayer(mainMapControl.Map.get_Layer(i));
+                }
+            }           
+            mainMapControl.AddLayerFromFile("..\\..\\..\\LayerFile\\forming.lyr");
+            //修复shp路径
+            for (int i = 0; i < mainMapControl.LayerCount; i++)
+            {
+                if (String.Compare(mainMapControl.Map.get_Layer(i).Name.ToString(), "forming") == 0) //只针对需要的这一层筛选
+                {
+                    IFeatureLayer pFeatureLayer = mainMapControl.Map.get_Layer(i) as IFeatureLayer;
+
+                    string filePath = "..\\..\\..\\" + "ShapeFile";//shp文件位置
+                    IWorkspaceFactory pWorkspaceFactory = new ShapefileWorkspaceFactory();//文件夹
+                    IWorkspace pWorkspace = pWorkspaceFactory.OpenFromFile(filePath, 0);
+                    IFeatureWorkspace pFeatureWorkspace = pWorkspace as IFeatureWorkspace;
+                    pFeatureLayer.FeatureClass = pFeatureWorkspace.OpenFeatureClass("forming");
+                }
+            }
+            mainMapControl.Refresh(); 
+        }
+
+        private void 台风级别升降ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < mainMapControl.LayerCount; i++)
+            {
+                if (String.Compare(mainMapControl.Map.get_Layer(i).Name.ToString(), "uppoint") == 0) //只针对需要的这一层筛选
+                {
+                    mainMapControl.Map.DeleteLayer(mainMapControl.Map.get_Layer(i));
+                }
+            }
+            for (int i = 0; i < mainMapControl.LayerCount; i++)
+            {
+                if (String.Compare(mainMapControl.Map.get_Layer(i).Name.ToString(), "downpoint") == 0) //只针对需要的这一层筛选
+                {
+                    mainMapControl.Map.DeleteLayer(mainMapControl.Map.get_Layer(i));
+                }
+            }
+            mainMapControl.AddLayerFromFile("..\\..\\..\\LayerFile\\uppoint.lyr");
+            mainMapControl.AddLayerFromFile("..\\..\\..\\LayerFile\\downpoint.lyr");
+            //修复shp路径
+            for (int i = 0; i < mainMapControl.LayerCount; i++)
+            {
+                if (String.Compare(mainMapControl.Map.get_Layer(i).Name.ToString(), "uppoint") == 0) //只针对需要的这一层筛选
+                {
+                    IFeatureLayer pFeatureLayer = mainMapControl.Map.get_Layer(i) as IFeatureLayer;
+
+                    string filePath = "..\\..\\..\\" + "ShapeFile";//shp文件位置
+                    IWorkspaceFactory pWorkspaceFactory = new ShapefileWorkspaceFactory();//文件夹
+                    IWorkspace pWorkspace = pWorkspaceFactory.OpenFromFile(filePath, 0);
+                    IFeatureWorkspace pFeatureWorkspace = pWorkspace as IFeatureWorkspace;
+                    pFeatureLayer.FeatureClass = pFeatureWorkspace.OpenFeatureClass("uppoint");
+                }
+            }
+            for (int i = 0; i < mainMapControl.LayerCount; i++)
+            {
+                if (String.Compare(mainMapControl.Map.get_Layer(i).Name.ToString(), "downpoint") == 0) //只针对需要的这一层筛选
+                {
+                    IFeatureLayer pFeatureLayer = mainMapControl.Map.get_Layer(i) as IFeatureLayer;
+
+                    string filePath = "..\\..\\..\\" + "ShapeFile";//shp文件位置
+                    IWorkspaceFactory pWorkspaceFactory = new ShapefileWorkspaceFactory();//文件夹
+                    IWorkspace pWorkspace = pWorkspaceFactory.OpenFromFile(filePath, 0);
+                    IFeatureWorkspace pFeatureWorkspace = pWorkspace as IFeatureWorkspace;
+                    pFeatureLayer.FeatureClass = pFeatureWorkspace.OpenFeatureClass("downpoint");
+                }
+            }
+            mainMapControl.Refresh();
+        }
+
+        private void 登陆ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < mainMapControl.LayerCount; i++)
+            {
+                if (String.Compare(mainMapControl.Map.get_Layer(i).Name.ToString(), "landing") == 0) //只针对需要的这一层筛选
+                {
+                    mainMapControl.Map.DeleteLayer(mainMapControl.Map.get_Layer(i));
+                }
+            }
+            mainMapControl.AddLayerFromFile("..\\..\\..\\LayerFile\\landing.lyr");
+            //修复shp路径
+            for (int i = 0; i < mainMapControl.LayerCount; i++)
+            {
+                if (String.Compare(mainMapControl.Map.get_Layer(i).Name.ToString(), "landing") == 0) //只针对需要的这一层筛选
+                {
+                    IFeatureLayer pFeatureLayer = mainMapControl.Map.get_Layer(i) as IFeatureLayer;
+
+                    string filePath = "..\\..\\..\\" + "ShapeFile";//shp文件位置
+                    IWorkspaceFactory pWorkspaceFactory = new ShapefileWorkspaceFactory();//文件夹
+                    IWorkspace pWorkspace = pWorkspaceFactory.OpenFromFile(filePath, 0);
+                    IFeatureWorkspace pFeatureWorkspace = pWorkspace as IFeatureWorkspace;
+                    pFeatureLayer.FeatureClass = pFeatureWorkspace.OpenFeatureClass("landing");
+                }
+            }
+            mainMapControl.Refresh();
+        }
+
+        private void 离开ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < mainMapControl.LayerCount; i++)
+            {
+                if (String.Compare(mainMapControl.Map.get_Layer(i).Name.ToString(), "leaving") == 0) //只针对需要的这一层筛选
+                {
+                    mainMapControl.Map.DeleteLayer(mainMapControl.Map.get_Layer(i));
+                }
+            }
+            mainMapControl.AddLayerFromFile("..\\..\\..\\LayerFile\\leaving.lyr");
+            //修复shp路径
+            for (int i = 0; i < mainMapControl.LayerCount; i++)
+            {
+                if (String.Compare(mainMapControl.Map.get_Layer(i).Name.ToString(), "leaving") == 0) //只针对需要的这一层筛选
+                {
+                    IFeatureLayer pFeatureLayer = mainMapControl.Map.get_Layer(i) as IFeatureLayer;
+
+                    string filePath = "..\\..\\..\\" + "ShapeFile";//shp文件位置
+                    IWorkspaceFactory pWorkspaceFactory = new ShapefileWorkspaceFactory();//文件夹
+                    IWorkspace pWorkspace = pWorkspaceFactory.OpenFromFile(filePath, 0);
+                    IFeatureWorkspace pFeatureWorkspace = pWorkspace as IFeatureWorkspace;
+                    pFeatureLayer.FeatureClass = pFeatureWorkspace.OpenFeatureClass("leaving");
+                }
+            }
+            mainMapControl.Refresh();
+        }
+
+        private void 清空ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < mainMapControl.LayerCount; i++)
+            {
+                if (String.Compare(mainMapControl.Map.get_Layer(i).Name.ToString(), "forming") == 0) //只针对需要的这一层筛选
+                {
+                    mainMapControl.Map.DeleteLayer(mainMapControl.Map.get_Layer(i));
+                }
+            }
+            for (int i = 0; i < mainMapControl.LayerCount; i++)
+            {
+                if (String.Compare(mainMapControl.Map.get_Layer(i).Name.ToString(), "uppoint") == 0) //只针对需要的这一层筛选
+                {
+                    mainMapControl.Map.DeleteLayer(mainMapControl.Map.get_Layer(i));
+                }
+            }
+            for (int i = 0; i < mainMapControl.LayerCount; i++)
+            {
+                if (String.Compare(mainMapControl.Map.get_Layer(i).Name.ToString(), "downpoint") == 0) //只针对需要的这一层筛选
+                {
+                    mainMapControl.Map.DeleteLayer(mainMapControl.Map.get_Layer(i));
+                }
+            }
+            for (int i = 0; i < mainMapControl.LayerCount; i++)
+            {
+                if (String.Compare(mainMapControl.Map.get_Layer(i).Name.ToString(), "landing") == 0) //只针对需要的这一层筛选
+                {
+                    mainMapControl.Map.DeleteLayer(mainMapControl.Map.get_Layer(i));
+                }
+            }
+            for (int i = 0; i < mainMapControl.LayerCount; i++)
+            {
+                if (String.Compare(mainMapControl.Map.get_Layer(i).Name.ToString(), "leaving") == 0) //只针对需要的这一层筛选
+                {
+                    mainMapControl.Map.DeleteLayer(mainMapControl.Map.get_Layer(i));
+                }
+            }
+        }
